@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../Modal/Modal.module.css";
 
 const Modal = (props) => {
@@ -20,12 +20,13 @@ const Modal = (props) => {
     const inputGroupName = e.target.value;
     setgroupname(inputGroupName);
     seticonname(
-        inputGroupName
-          .split(" ")
-          .slice(0, 2)
-          .map((word) => word.charAt(0).toUpperCase())
-          .join("")
-      );  };
+      inputGroupName
+        .split(" ")
+        .slice(0, 2)
+        .map((word) => word.charAt(0).toUpperCase())
+        .join("")
+    );
+  };
 
   const changecolor = (color) => {
     console.log("Selected color:", color);
@@ -33,27 +34,8 @@ const Modal = (props) => {
   };
 
 
-// const creategrp = () => {
-//   if (groupname && grpcolor) {
-//     props.setgrp((prev) => [
-//       ...prev,
-//       { noteIcon: iconname, noteGrpName: groupname, noteColor: grpcolor },
-//     ]
-    
-//     );
-//     // Clear input fields after creating a group
-//     console.log("Saving data to localStorage");
-//     window.localStorage.setItem("grp", JSON.stringify(props.grp));
-//     setgroupname("");
-//     seticonname("");
-//     setgrpcolor("");
-
-//     props.onClose()
-//   }
-
-// };
-const creategrp = () => {
-  if (groupname && grpcolor) {
+  const creategrp = () => {
+    if (groupname && grpcolor) {
       const updatedGrp = [...props.grp, { noteIcon: iconname, noteGrpName: groupname, noteColor: grpcolor }];
 
       console.log("Saving data to localStorage");
@@ -61,41 +43,37 @@ const creategrp = () => {
 
       props.setgrp(updatedGrp);
 
-      // Clear input fields after creating a group
       setgroupname("");
       seticonname("");
       setgrpcolor("");
 
       props.onClose();
-  }
-};
+    }
+  };
 
- 
- 
-  
   return (
     <>
       <div className={styles.createnewgrppop}>
-        <p style={{fontSize:'larger'}}>Create New group</p>
+        <p style={{ fontSize: 'larger' }}>Create New group</p>
         <div className={styles.flexItem}>
-            <p>Group Name</p>
-        <input className={styles.inputModal}
-          type="text"
-          name="groupname"
-          id="groupname"
-          placeholder="Enter group name"
-          value={groupname}
-          onChange={(e) => handlechange(e)}
-        />
+          <p>Group Name</p>
+          <input className={styles.inputModal}
+            type="text"
+            name="groupname"
+            id="groupname"
+            placeholder="Enter group name"
+            value={groupname}
+            onChange={(e) => handlechange(e)}
+          />
         </div>
 
         <div className={styles.flexItem}>
-        <p>Choose colour</p>
-        {colors.map((colorItem)=>{
-        return <div key={colorItem} onClick={() => changecolor(colorItem)} style={{backgroundColor:colorItem}} className={styles.red}></div>         
+          <p>Choose colour</p>
+          {colors.map((colorItem) => {
+            return <div key={colorItem} onClick={() => changecolor(colorItem)} style={{ backgroundColor: colorItem }} className={styles.red}></div>
 
-        })}
-        
+          })}
+
         </div>
         <button onClick={creategrp} className={styles.modalbtn}>Create</button>
 

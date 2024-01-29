@@ -8,12 +8,12 @@ const DisplayNotes = (props) => {
     const [chat, setchat] = useState("");
 
 
-    useEffect(()=>{
+    useEffect(() => {
         const storedSubmittedTexts = localStorage.getItem("submittedTexts");
         if (storedSubmittedTexts) {
-          setSubmittedTexts(JSON.parse(storedSubmittedTexts));
+            setSubmittedTexts(JSON.parse(storedSubmittedTexts));
         }
-      }, []);
+    }, []);
 
 
     const handleTextsChange = (e) => {
@@ -23,7 +23,7 @@ const DisplayNotes = (props) => {
         setchat(e.target.value);
         setDisabled(false);
     };
-    
+
 
 
     const handleNoteSubmission = () => {
@@ -35,70 +35,61 @@ const DisplayNotes = (props) => {
             });
             const options = { day: "numeric", month: "short", year: "numeric" };
             const formattedDate = currentDate.toLocaleDateString(undefined, options);
-    
+
             const newSubmittedText = {
                 text: chat,
                 timec: formattedTime,
                 datec: formattedDate,
                 groupIndex: props.clickedGroup,
             };
-    
+
             setSubmittedTexts((prevTexts) => [...prevTexts, newSubmittedText]);
-    
-            // Corrected code: use setSubmittedTexts instead of submittedTexts
             localStorage.setItem("submittedTexts", JSON.stringify([...submittedTexts, newSubmittedText]));
-    
-            setchat(""); // Clear the input after submission
+
+            setchat("");
             setDisabled(true);
         }
     };
-    
-    
+
 
     const handleKeyDown = (e) => {
-        // Check if the pressed key is Enter
         if (e.key === "Enter") {
             e.preventDefault();
             handleNoteSubmission();
         } else if (e.key === "Backspace") {
             e.preventDefault();
-
-            // Implement your custom backspace logic
-            const updatedChat = chat.slice(0, -1); // Remove the last character
-            setchat(updatedChat);        }
+            const updatedChat = chat.slice(0, -1);
+            setchat(updatedChat);
+        }
     };
 
- 
+
 
     return (
         <>
-            <div 
-            className={styles.flexContainer} 
-            // style={props.visible}
-            // style={{display: props.visible?{display:'contents'}:{display:'flex'}}}
-            >
 
-                {/* onclick the grp  */}
+            <div
+                className={`${styles.flexContainer} ${props.backBtnClicked && styles.togglet}`}
+            >
+                {/* onClick the grp  */}
                 {props.clickedGroup !== null ? (
                     <div className={styles.sidebar}>
+                        {/* Heading */}
+                        <div
+                            className={styles.flex1}
+                            style={{
+                                width: '-webkit-fill-available',
+                                padding: '1px 14px',
+                                backgroundColor: '#001F8B',
+                                color: '#FFFFFF'
+                            }}>
+                            <img src="/svgs/backBtn.svg" alt="back"
+                                className={styles.backBtn}
+                                onClick={() => {
+                                    props.setBackBtnClicked(true);
+                                    console.log(props.backBtnClicked);
 
-
-                            {/* Heading */}
-                        <div 
-                        className={styles.flex1}
-                        style={{
-                            width: '-webkit-fill-available',
-                            padding: '1px 14px',
-                            backgroundColor: '#001F8B',
-                            color: '#FFFFFF'
-                        }}>
-                            <img src="/svgs/backBtn.svg" alt="back" 
-                            className={styles.backBtn}
-                            // style={{display: 'none'}}
-                            onClick={() => {
-                                props.setVisible({ display: "none" });
-                            }}
-
+                                }}
                             />
                             <div className={styles.groupNotes}>
                                 <p style={{ backgroundColor: props.grp[props.clickedGroup].noteColor }} className={styles.noteIcon}>
@@ -108,9 +99,7 @@ const DisplayNotes = (props) => {
 
                         </div>
 
-
-
-                            {/* Display submitted texts for the selected group */}
+                        {/* Display submitted texts for the selected group */}
                         <div className={styles.flex2}>
                             <ul className={styles.ulcard}>
                                 {submittedTexts
@@ -120,18 +109,16 @@ const DisplayNotes = (props) => {
                                             key={index}>
                                             <span className={styles.chatli}>{text.text}</span> <br />
                                             <p className={styles.date}>
-                                            {text.datec} ● {text.timec}
+                                                {text.datec} ● {text.timec}
                                             </p>
                                         </li>
                                     ))}
                             </ul>
                         </div>
 
-
-
-                            {/* Add notes input*/}
+                        {/* Add notes input*/}
                         <div className={styles.flex3}>
-                            <textarea 
+                            <textarea
                                 onKeyDown={(e) => handleKeyDown(e)}
                                 onChange={(e) => handleTextsChange(e)}
                                 type="text"
@@ -140,33 +127,32 @@ const DisplayNotes = (props) => {
                                 placeholder='Enter your text here...........'>
                             </textarea>
                             <img
-                            src={disabled?'/svgs/disabledSend.svg':'/svgs/enabledSend.svg'}
-                                style={disabled ? {cursor: "not-allowed" } : {}}
+                                src={disabled ? '/svgs/disabledSend.svg' : '/svgs/enabledSend.svg'}
+                                style={disabled ? { cursor: "not-allowed" } : {}}
                                 onClick={handleNoteSubmission}
                                 className={styles.sendBtn}
                             />
-                                
+
                         </div>
                     </div>
-                ) : 
-                
-                // ....................................................
-                <>
-                    <img className={styles.heroBg} src="/images/heroBg.png" alt="Pocket notes" />
-                    <p>Pocket Notes</p>
-                    <p>Send and receive messages without keeping your phone online.
-                    </p>
-                    <p> Use Pocket Notes on up to 4 linked devices and 1 mobile phone.
-                    </p>
+                ) :
 
-                    <footer className={styles.notesFooter}>
-                        <img className={styles.encryptedSvg} src="/svgs/lock.svg" alt="encrypted" />
-                        <span>end-to-end encrypted</span>
-                    </footer>
-                </>
+                    <>
+                        <img className={styles.heroBg} src="/images/heroBg.png" alt="Pocket notes" />
+                        <p>Pocket Notes</p>
+                        <p>Send and receive messages without keeping your phone online.
+                        </p>
+                        <p> Use Pocket Notes on up to 4 linked devices and 1 mobile phone.
+                        </p>
+
+                        <footer className={styles.notesFooter}>
+                            <img className={styles.encryptedSvg} src="/svgs/lock.svg" alt="encrypted" />
+                            <span>end-to-end encrypted</span>
+                        </footer>
+                    </>
                 }
             </div>
-            
+
         </>
     )
 }

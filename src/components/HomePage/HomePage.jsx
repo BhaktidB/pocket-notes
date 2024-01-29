@@ -1,4 +1,4 @@
-import React, { useState, useRef,useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from '../HomePage/HomePage.module.css'
 import StackedNotes from '../StackedNotes/StackedNotes'
 import DisplayNotes from '../DisplayNotes/DisplayNotes'
@@ -11,8 +11,6 @@ const HomePage = () => {
     const [modal, setModal] = useState(false);
     const [displaynote, setDisplaynote] = useState("");
     const [clickedGroup, setClickedGroup] = useState(null);
-    const [visible, setVisible] = useState({ display: "none" });
-    // const [toggle, setToggle] = useState(false);
 
 
     const modalref = useRef();
@@ -24,32 +22,29 @@ const HomePage = () => {
         }
     };
     console.log(grp)
-    // useEffect(() => {
-        
-    //   }, [grp]);
 
-    const displayNotes = (index,newdisplay) => {
+
+    const displayNotes = (index) => {
         console.log('hello')
         const noteContent = grprefs.current[index].current.textContent;
         setDisplaynote(noteContent);
         setClickedGroup(index);
-        setVisible({ display: "contents" ,...newdisplay});
-
     }
 
     useEffect(() => {
         console.log("Loading data from localStorage");
         const storedGrp = window.localStorage.getItem("grp");
         if (storedGrp) {
-          setgrp(JSON.parse(storedGrp));
+            setgrp(JSON.parse(storedGrp));
         }
-      }, []);
-      
-   
+    }, []);
+
+    let [backBtnClicked, setBackBtnClicked] = useState(false);
+    console.log('not rendered', backBtnClicked);
+
+
     return (
         <>
-
-
             <div className={styles.flexContainer}>
                 {modal && <div ref={modalref} onClick={closemodale} className={styles.modal}>
                     <Modal onClose={() => setModal(false)}
@@ -61,10 +56,9 @@ const HomePage = () => {
                     onCreate={() => setModal(true)}
                     displayNotes={displayNotes}
                     clickedGroup={clickedGroup}
-                    setVisible={setVisible}
-                   
+                    setBackBtnClicked={setBackBtnClicked}
                 />
-                <DisplayNotes grp={grp} clickedGroup={clickedGroup} visible={visible} setVisible={setVisible}
+                <DisplayNotes grp={grp} clickedGroup={clickedGroup} setBackBtnClicked={setBackBtnClicked} backBtnClicked={backBtnClicked}
                 />
             </div>
         </>

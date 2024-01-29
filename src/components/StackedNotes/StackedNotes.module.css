@@ -34,8 +34,6 @@
 
 .groupNotesConatiner {
     overflow: auto;
-    /* padding: 0 25px; */
-
 }
 
 .btn {
@@ -47,11 +45,9 @@
     background-color: #16008B;
     border-radius: 50%;
     border: none;
-    /* padding: 18px; */
     color: white;
     font-size: xxx-large;
     text-align: center;
-    /* margin-top: 45vmin; */
     top: 85vmin;
 
 }

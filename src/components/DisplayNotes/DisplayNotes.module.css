@@ -1,4 +1,4 @@
-.flexContainer{
+.flexContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,7 +9,6 @@
     width: calc(100% - 360px);
     height: 100vh;
     justify-content: center;
-
 }
 
 ::-webkit-scrollbar {
@@ -17,45 +16,42 @@
     background-color: #000000A1;
 }
 
-.heroBg{
+.heroBg {
     height: 40vmin;
     width: 60vmin;
 }
 
-.headingp{
+.headingp {
     font-size: xx-large;
     font-weight: 700;
     margin: 0;
 }
 
-.flexContainer>p{
+.flexContainer>p {
     margin: 0;
-
 }
 
-
-.encryptedSvg{
+.encryptedSvg {
     float: left;
     padding: 1vmin;
     height: 2.5vmin;
 }
 
-.notesFooter{
+.notesFooter {
     position: absolute;
     bottom: 0px;
 }
 
-.groupNotes{
+.groupNotes {
     display: flex;
     flex-direction: row;
     gap: 4vmin;
     align-items: baseline;
-    /* cursor: pointer; */
     font-size: large;
 
 }
 
-.noteIcon{
+.noteIcon {
     background-color: pink;
     color: #FFFFFF;
     border-radius: 50%;
@@ -66,33 +62,30 @@
     width: 50px;
 }
 
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     background-color: #FFFFFF;
     position: relative;
-    /* left: 360px; */
     width: calc(100%);
     height: 100vh;
     justify-content: space-between;
-    /* padding: 20px; */
     overflow: hidden;
 
 }
 
-.flex1{
+.flex1 {
     font-family: Roboto;
-font-size: 24px;
-font-weight: 500;
-/* line-height: 28px; */
-/* letter-spacing: 0.02em; */
-text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+
+    text-align: left;
 
 }
 
-.flex2{
+.flex2 {
     display: flex;
     flex-direction: column-reverse;
     width: -webkit-fill-available;
@@ -101,12 +94,12 @@ text-align: left;
     height: -webkit-fill-available;
 
 }
-.ulcard{
-    margin-bottom: 35px;
 
+.ulcard {
+    margin-bottom: 35px;
 }
 
-.licard{
+.licard {
     list-style-type: none;
     background-color: aliceblue;
     width: 91%;
@@ -116,39 +109,31 @@ text-align: left;
     border-radius: 5px;
 }
 
-.chatli{
+.chatli {
     font-family: Roboto;
-    /* font-size: 18px; */
     font-weight: 400;
-    /* line-height: 29px; */
-    /* letter-spacing: 0.035em; */
     text-align: left;
     list-style-type: none;
-
 }
 
-.date{
+.date {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 500;
     line-height: 8px;
-    /* letter-spacing: 0.02em; */
     text-align: right;
-    
-    
 }
 
-.flex3{
+.flex3 {
     width: -webkit-fill-available;
     background-color: yellow;
     height: 120px;
     position: sticky;
     bottom: 27px;
     background-color: rgb(0, 31, 139);
-
 }
 
-.sendInput{
+.sendInput {
     width: -webkit-fill-available;
     height: 120px;
     border: 10px solid rgb(0, 31, 139);
@@ -159,12 +144,10 @@ text-align: left;
     resize: none;
     overflow: auto;
     outline: none;
-    /* -webkit-box-shadow: none; */
-    /* -moz-box-shadow: none; */
     box-shadow: none;
 }
 
-.sendBtn{
+.sendBtn {
     position: absolute;
     bottom: 0px;
     right: 25px;
@@ -172,7 +155,7 @@ text-align: left;
     width: 4vmin;
 }
 
-.backBtn{
+.backBtn {
     float: left;
     height: 6vmin;
     width: 6vmin;
@@ -180,39 +163,44 @@ text-align: left;
 }
 
 
-@media (max-width: 360px){
-    /* onclick  display: contents; */
+@media (max-width: 360px) {
 
-    .flexContainer{
-    display: contents;
-   }
+    .flexContainer {
+        display: contents;
+    }
 
-   .flex2{
-    align-self: center;
-    margin-left: -30px;
-   }
-   
-   .sendBtn{
-    height: 7vmin;
-    width: 7vmin;
-   }
+    .flex2 {
+        align-self: center;
+        margin-left: -30px;
+    }
 
-   .sendInput{
-    font-size: 18px;
+    .sendBtn {
+        height: 7vmin;
+        width: 7vmin;
+    }
 
-   }
-     
-   .backBtn{
-    display: flex;
-    /* align-items: center; */
-    /* gap: 25px; */
-    padding-left: 22px;
-    padding-top: 28px;
-    padding-right: 20px;
-   }
+    .sendInput {
+        font-size: 18px;
 
-   .notesFooter{
-    display: none;
-   }
+    }
+
+    .backBtn {
+        display: flex;
+        padding-left: 22px;
+        padding-top: 28px;
+        padding-right: 20px;
+    }
+
+    .notesFooter {
+        display: none;
+    }
 
 }
+
+.togglet {
+    display: none;
+}
+
+/* .togglef{
+    display: contents;
+} */
