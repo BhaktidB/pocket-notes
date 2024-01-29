@@ -1,0 +1,80 @@
+.createnewgrppop {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 390px;
+    background-color: #FFFFFF;
+    justify-content: flex-start;
+    align-items: baseline;
+    line-height: 1;
+    color: #000000;
+    border-radius: 5px;
+    padding: 3vmin;
+
+  }
+
+.inputModal{
+    border-radius: 5vmin;
+    padding: 2vmin;
+    color: #979797;
+    border: 1px solid #CCCCCC;
+    text-align: left;
+    width: 40vmin;
+    font-weight: 500;
+}
+
+.red {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: red;
+    margin-top: 15px;
+    margin-left: 1vmin;
+    align-self: flex-start;
+    cursor: "pointer";
+  }
+
+.flexItem{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    gap: 2vmin;
+
+}
+
+.modalbtn{
+    background: #001F8B;
+    color: #FFFFFF;
+    border-radius: 3vmin;
+    padding: 1vmin 4vmin;
+    border: none;
+    align-self: flex-end;
+    margin-right: 4vmin;
+    margin-top: 4vmin;
+    font-size: larger;
+
+}
+
+@media (max-width: 360px){
+
+    .createnewgrppop{
+        width: 295px;
+        height: 235px;
+        padding: 4vmin;
+
+    }
+
+    .flexItem{
+        gap: 2px;
+    }    
+
+    .inputModal{
+        width: 50vmin;
+    }
+
+    .modalbtn{
+        padding: 4vmin 27vmin;
+        align-self: center;
+        margin-top: 7vmin;
+    }
+}

@@ -1,0 +1,36 @@
+
+.groupNotes{
+    display: flex;
+    flex-direction: row;
+    gap: 4vmin;
+    align-items: baseline;
+    cursor: pointer;
+    padding-left: 25px;
+    font-size: larger;
+
+}
+
+.noteIcon{
+    background-color: pink;
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    width: 65px;
+}
+
+.backgroundColorPink{
+    background-color: #2F2F2F2B;
+}
+.backgroundColorBlue{
+    background-color: #FFFFFF;
+
+}
+
+@media (max-width: 360px){
+    /* .groupNotes{
+        font-size: x-large;
+    } */
+}

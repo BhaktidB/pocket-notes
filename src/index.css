@@ -1,0 +1,21 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  color: #000000;
+  background-color: #DAE5F5;
+  text-rendering: optimizeLegibility;
+ 
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+  /* display: flex; */
+  /* place-items: center; */
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: clip;
+
+}
+/* media */
